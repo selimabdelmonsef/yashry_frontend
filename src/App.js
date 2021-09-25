@@ -3,6 +3,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react'
 import { api } from './constants/api.constants'
 import axios from 'axios';
+import Categories from './components/category/category';
 
 function App() {
 
@@ -14,8 +15,13 @@ function App() {
   }, [console.log(products)])
   return (
     <div className="App">
+      <div>
       <h1>Yashry</h1>
       <h6>Choose one of our categories below</h6>
+      </div>
+      <div className="categories">
+      <Categories/>
+      </div>
     </div>
   );
 }

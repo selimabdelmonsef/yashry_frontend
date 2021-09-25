@@ -1,4 +1,4 @@
-export const CATEGORY = [
+export const CATEGORY_ITEMS = [
     {
         categoryId: 1,
         department_name: "MAN"
