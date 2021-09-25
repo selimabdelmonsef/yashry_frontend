@@ -1,0 +1,10 @@
+li{
+    display: inline;
+    cursor: pointer;
+}
+.departmentsItems{
+    margin: 10px;
+}
+.departments{
+    padding: 10px;
+}
