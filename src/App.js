@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState } from 'react'
+import { api } from './constants/api.constants'
+import axios from 'axios';
 
 function App() {
+
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    axios.get(api.products_category_rating_api.replace("{{categoryId}}", 1).replace("{{rating}}", 1)).then((response) => setProducts(response.data))
+
+  }, [console.log(products)])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Yashry</h1>
+      <h6>Choose one of our categories below</h6>
     </div>
   );
 }
