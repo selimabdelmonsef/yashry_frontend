@@ -1,0 +1,13 @@
+.searchItems{
+   height: 200px;
+   overflow-y: auto;
+   margin-top: 10px;
+}
+.inputStyle{
+    width: 75px;
+    margin-top: 10px;
+}
+.searchElement{
+    margin-top: 7px;
+    display: flex;
+}

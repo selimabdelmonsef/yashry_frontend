@@ -1,0 +1,13 @@
+.chooseColor{
+    text-align: initial;
+    float: left;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.checkbox{
+    height: 200px;
+    overflow-y: auto;
+}
+.checkboxElements{
+    display: flex;
+}
