@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../../constants/api.constants';
 import styles from './category.module.css';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { REDUCERS_CONSTANTS } from '../../constants/reducers.constants';
 
 
 const Categories = () => {
     const [categories, setCategories] = useState();
-
-    // const category = useSelector(state => state.category);
     const dispatch = useDispatch();
     useEffect(() => {
         axios.get(api.category_api).then((response) => setCategories(response))

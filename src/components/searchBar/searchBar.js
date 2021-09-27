@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import styles from './searchBar.module.css';
-import MyCheckBox from "../checkbox/checkbox";
 
 function SearchBar({
     placeholder }) {
