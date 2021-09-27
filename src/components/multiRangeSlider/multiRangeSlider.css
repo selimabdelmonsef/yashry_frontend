@@ -101,8 +101,9 @@
   .clearRange{
     float: left;
     margin-top: 38px;
-    margin-left: 10px;
+    margin-left: 20px;
     font-size: 10px;
+    display: flex;
 }
 .xStyle{
     cursor: pointer;

@@ -81,8 +81,8 @@ const clearPriceRange=()=>{
      
     </div>
     <div className="clearRange">
-    <h7 onClick={()=>clearPriceRange()}className="xStyle">X </h7>
-    <h7>CLEAR</h7>
+    <h6 onClick={()=>clearPriceRange()}className="xStyle">X </h6>
+    <h6> CLEAR</h6>
     </div>
     </div>
   );
