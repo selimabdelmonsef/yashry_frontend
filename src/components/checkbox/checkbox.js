@@ -29,6 +29,7 @@ newArray[index].checked = !newArray[index].checked;
                     checked={item?.checked} 
                     label={item?.label} 
                     value={item?.value} 
+                    key={index}
                     onChange={()=>updateValue(index)}/>
                     </div>
             })}

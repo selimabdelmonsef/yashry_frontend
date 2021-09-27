@@ -14,7 +14,6 @@ const ColorChoose = () => {
         }
     });
     useEffect(()=>{
-console.log(colors);
     },[colors])
 
 
