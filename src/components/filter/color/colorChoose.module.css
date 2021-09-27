@@ -1,12 +1,15 @@
 .chooseColor{
     text-align: initial;
     float: left;
-    margin-left: 10px;
-    margin-top: 20px;
+    border-style: outset;
+    height: 260px;
+    margin: 12px;
+    padding: 10px;
 }
 .checkbox{
     height: 200px;
     overflow-y: auto;
+    font-size: 11px;
 }
 .checkboxElements{
     display: flex;
