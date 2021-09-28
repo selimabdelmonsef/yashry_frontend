@@ -9,6 +9,7 @@ import { REDUCERS_CONSTANTS } from '../../constants/reducers.constants';
 const Categories = () => {
     const [categories, setCategories] = useState();
     const dispatch = useDispatch();
+    
     useEffect(() => {
         axios.get(api.category_api).then((response) => setCategories(response))
     }, [categories]);
