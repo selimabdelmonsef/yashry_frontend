@@ -12,9 +12,8 @@ const Products = () => {
     const [products, setProducts] = useState();
     const productState = useSelector(state => state.products);
     const dispatch = useDispatch();
-    const useMountEffect = (fun) => useEffect(fun, [])
+    const useMountEffect = (fun) => useEffect(fun, [category])
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const getProductsData = () => {
         axios.get(api.products_categoryId_api
             .replace("{{categoryId}}", category?.data?.id || '1'))
