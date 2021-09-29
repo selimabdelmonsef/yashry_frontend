@@ -4,20 +4,17 @@ import PropTypes from 'prop-types';
 
 export const MyCheckBox = ({
     items,
-
+    itemsSelected
 }) => {
 
-    const[itemsValue, setItemsValue]= useState(items);
+    const [itemsValue, setItemsValue] = useState(items);
 
-const updateValue = (index)=>{
-const newArray = [...itemsValue];
-newArray[index].checked = !newArray[index].checked;
-
-    setItemsValue(newArray);
-    console.log("newArray:",newArray);
-    console.log("Items Value:",itemsValue);
-
-}
+    const updateValue = (index) => {
+        const newArray = [...itemsValue];
+        newArray[index].checked = !newArray[index].checked;
+        setItemsValue(newArray);
+        itemsSelected(newArray);
+    }
     useEffect(() => {
     }, []);
 
@@ -25,13 +22,13 @@ newArray[index].checked = !newArray[index].checked;
         <div>
             {itemsValue?.map((item, index) => {
                 return <div>
-                    <Checkbox 
-                    checked={item?.checked} 
-                    label={item?.label} 
-                    value={item?.value} 
-                    key={index}
-                    onChange={()=>updateValue(index)}/>
-                    </div>
+                    <Checkbox
+                        checked={item?.checked}
+                        label={item?.label}
+                        value={item?.value}
+                        key={index}
+                        onChange={() => updateValue(index)} />
+                </div>
             })}
         </div>
     );

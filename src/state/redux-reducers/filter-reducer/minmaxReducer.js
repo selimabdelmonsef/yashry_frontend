@@ -1,4 +1,4 @@
-import { REDUCERS_CONSTANTS } from "../../constants/reducers.constants";
+import { REDUCERS_CONSTANTS } from "../../../constants/reducers.constants";
 
 const initialState = [];
 

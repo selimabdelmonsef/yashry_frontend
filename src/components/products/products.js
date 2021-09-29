@@ -1,64 +1,48 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {useEffect } from 'react';
 import styles from './products.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 import { api } from '../../constants/api.constants';
 import { REDUCERS_CONSTANTS } from '../../constants/reducers.constants';
-
-
+import useFetch from '../fetch/useFetch';
+import { MySpinner } from '../spinner/spinner';
 
 const Products = () => {
     const category = useSelector(state => state.category);
-    const [products, setProducts] = useState();
     const productState = useSelector(state => state.products);
     const dispatch = useDispatch();
-    const useMountEffect = (fun) => useEffect(fun, [category])
-
-    const getProductsData = () => {
-        axios.get(api.products_categoryId_api
-            .replace("{{categoryId}}", category?.data?.id || '1'))
-            .then(response => dispatch({
-                type: REDUCERS_CONSTANTS.PRODUCTS.GET_PRODUCTS,
-                data: response.data
-            })).then(response => dispatch({
-                type: REDUCERS_CONSTANTS.PRODUCTS.UPDATE_PRODUCTS,
-                data: response.data
-            }));
-
-
-    };
-    useMountEffect(getProductsData);
-
-    const generateLoadingSpinner = useCallback(() => {
-        if (productState?.updatedProducts?.length === undefined) {
-            dispatch({
-                type: REDUCERS_CONSTANTS.LOADING,
-                data: true
-            })
-        }
-        else {
-            dispatch({
-                type: REDUCERS_CONSTANTS.LOADING,
-                data: false
-            })
-        }
-    }, [productState, dispatch]);
-
-
+    
+    const { data: products, isPending, error } = useFetch(api.products_categoryId_api.replace("{{categoryId}}", category?.data?.id || '1'));
+    
     useEffect(() => {
-        generateLoadingSpinner();
-    }, [generateLoadingSpinner]);
+        setData();
+    }, [products]);
 
+    const setData = () => {
+        dispatch({
+            type: REDUCERS_CONSTANTS.PRODUCTS.GET_PRODUCTS,
+            data: products
+
+        })
+        dispatch({
+            type: REDUCERS_CONSTANTS.PRODUCTS.UPDATE_PRODUCTS,
+            data: products
+        })
+    }
 
     return (
-        <div className={styles.productsBase}>
-            {productState?.updatedProducts?.map((element, index) => {
-                return <div className={styles.productsElements}>
-                    <img className={styles.imageStyle} src={element?.image + index} alt="" />
-                    <div>{element?.name}</div>
-                    <div>{element?.price} {element?.currency}</div>
-                </div>
-            })}
+        <div>
+            {error && <div>{error}</div>}
+            {isPending && <div><MySpinner title="Loading products..."/></div>}
+
+            {productState?.updatedProducts && <div className={styles.productsBase}>
+                {productState?.updatedProducts?.map((element, index) => {
+                    return <div className={styles.productsElements}>
+                        <img className={styles.imageStyle} src={element?.image + index} alt="" />
+                        <div>{element?.name}</div>
+                        <div>{element?.price} {element?.currency}</div>
+                    </div>
+                })}
+            </div>}
 
         </div>
 

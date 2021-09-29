@@ -1,20 +1,11 @@
-import React, { useEffect } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
-
-export const MySpinner = () => {
-    const loading = useSelector(state => state.loading);
-
-
-    useEffect(() => {
-    }, []);
-
+export const MySpinner = ({title}) => {
     return (
         <div>
-            {loading.loading === true ? <ClipLoader color={"black"} loading={loading} size={50} /> : ""}
-
+            <ClipLoader color={"black"} loading={true} size={50} />
+            <div>{title}</div>
         </div>
     );
 }
