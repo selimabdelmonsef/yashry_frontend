@@ -6,25 +6,37 @@ import styles from './submit.module.css';
 
 
 const Submit = () => {
-    
+
+
     const productsState = useSelector(state => state.products);
     const minmax = useSelector(state => state?.minmax);
+    const color = useSelector(state => state?.color);
+    let productsColorFilter = [];
+    let productsFilter = [];
+    let productsPriceFilter = [];
     const dispatch = useDispatch();
+
+
     const updateProductsRequest = () => {
         console.log(minmax?.min, minmax?.max);
-        if (minmax?.min > 100 || minmax?.max < 1000) {
-            let productsPriceRange = productsState?.products.filter(minmaxPrice => minmax?.min <= minmaxPrice.price && minmaxPrice.price <= minmax?.max);
-            dispatch({
-                type: REDUCERS_CONSTANTS.PRODUCTS.UPDATE_PRODUCTS,
-                data: productsPriceRange
-            })
-        }
-console.log(productsState);
+        productsPriceFilter = productsState?.products?.filter(minmaxPrice => minmax?.min <= minmaxPrice.price && minmaxPrice.price <= minmax?.max);
+        productsFilter = productsPriceFilter;
+        color?.color?.map((checkedColor) => {
+            if (checkedColor.checked === true) {
+                productsColorFilter = [...productsColorFilter, ...productsPriceFilter.filter(product => product.color === checkedColor.label)];
+                productsFilter = productsColorFilter;
+            }
+        });
+        dispatch({
+            type: REDUCERS_CONSTANTS.PRODUCTS.UPDATE_PRODUCTS,
+            data: productsFilter
+        })
     }
+
     return (
-       <button className={styles.submitBtn}onClick={()=>updateProductsRequest()}>
-           SUBMIT
-       </button>
+        <button className={styles.submitBtn} onClick={() => updateProductsRequest()}>
+            SUBMIT
+        </button>
 
     );
 }

@@ -4,28 +4,32 @@ import styles from './category.module.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { REDUCERS_CONSTANTS } from '../../constants/reducers.constants';
+import useFetch from '../fetch/useFetch';
+import { MySpinner } from '../spinner/spinner';
 
 
 const Categories = () => {
-    const [categories, setCategories] = useState();
     const dispatch = useDispatch();
-    
-    useEffect(() => {
-        axios.get(api.category_api).then((response) => setCategories(response))
-    }, [categories]);
+    const { data: categories, isPending, error } = useFetch(api.category_api);
     const categoryHandler = (categorySelected) => {
         dispatch({
             type: REDUCERS_CONSTANTS.CATEGORY.GET_CATEGORY,
             data: categorySelected
-        })
-    }
+        });
+    };
+
     return (
-        <div className={styles.categoryBase}>
-            <ul className={styles.departments}>
-                {categories?.data.map((items) => {
-                    return <li onClick={() => categoryHandler(items)} className={styles.departmentsItems}>{items?.name}</li>
-                })}
-            </ul>
+        <div>
+            {error && <div>{error}</div>}
+            {isPending && <div><MySpinner /></div>}
+            {categories && <div className={styles.categoryBase}>
+                <ul className={styles.departments}>
+                    {categories.map((items) => {
+                        return <li onClick={() => categoryHandler(items)} className={styles.departmentsItems}>{items?.name}</li>
+                    })}
+                </ul>
+            </div>}
+
         </div>
 
     );

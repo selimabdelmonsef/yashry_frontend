@@ -11,7 +11,6 @@ function App() {
       <h6>Choose one of our categories below</h6>
       <Categories/>
       <Filters/>
-      <MySpinner/>
       <Products/>
     </div>
   );
