@@ -38,8 +38,8 @@ const Products = () => {
                 {productState?.updatedProducts?.map((element, index) => {
                     return <div className={styles.productsElements}>
                         <img className={styles.imageStyle} src={element?.image + index} alt="" />
-                        <div>{element?.name}</div>
-                        <div>{element?.price} {element?.currency}</div>
+                        <div className={styles.productName}>{element?.name}</div>
+                        <div className={styles.productPrice}>{element?.price} {element?.currency}</div>
                     </div>
                 })}
             </div>}

@@ -8,7 +8,8 @@ const Filters = () => {
     return (
         <div className={styles.filtersContainer}>
             <div className={styles.filtersBase}>
-                Filters
+                <div>FILTERS</div>
+                
                 <div className={styles.priceRange}><PriceRange /></div>
 
                 <ColorChoose />
