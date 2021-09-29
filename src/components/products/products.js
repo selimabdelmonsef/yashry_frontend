@@ -1,4 +1,4 @@
-import React, {useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styles from './products.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { api } from '../../constants/api.constants';
@@ -10,9 +10,9 @@ const Products = () => {
     const category = useSelector(state => state.category);
     const productState = useSelector(state => state.products);
     const dispatch = useDispatch();
-    
+
     const { data: products, isPending, error } = useFetch(api.products_categoryId_api.replace("{{categoryId}}", category?.data?.id || '1'));
-    
+
     useEffect(() => {
         setData();
     }, [products]);
@@ -32,17 +32,25 @@ const Products = () => {
     return (
         <div>
             {error && <div>{error}</div>}
-            {isPending && <div><MySpinner title="Loading products..."/></div>}
+            {isPending && <div><MySpinner title="Loading products..." /></div>}
 
-            {productState?.updatedProducts && <div className={styles.productsBase}>
-                {productState?.updatedProducts?.map((element, index) => {
-                    return <div className={styles.productsElements}>
-                        <img className={styles.imageStyle} src={element?.image + index} alt="" />
-                        <div className={styles.productName}>{element?.name}</div>
-                        <div className={styles.productPrice}>{element?.price} {element?.currency}</div>
-                    </div>
-                })}
-            </div>}
+            {productState?.updatedProducts?.length === 0 ?
+                <div className={styles.noProducts}>No Products</div>
+                :
+                <div>
+                    {productState?.updatedProducts && <div className={styles.productsBase}>
+                        {console.log(productState?.updatedProducts.length)}
+                        {productState?.updatedProducts?.map((element, index) => {
+                            return <div className={styles.productsElements}>
+                                <img className={styles.imageStyle} src={element?.image + index} alt="" />
+                                <div className={styles.productName}>{element?.name}</div>
+                                <div className={styles.productPrice}>{element?.price} {element?.currency}</div>
+                            </div>
+                        })}
+                    </div>}
+                </div>
+            }
+
 
         </div>
 
