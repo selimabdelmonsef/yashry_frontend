@@ -25,8 +25,6 @@ const ColorChoose = () => {
       type: REDUCERS_CONSTANTS.COLOR.GET_COLOR,
       data: colorsChecked
         })
-        // console.log('update', colorsChecked)
-
     }
 
     return (

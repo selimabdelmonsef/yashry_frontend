@@ -18,7 +18,6 @@ const Submit = () => {
 
 
     const updateProductsRequest = () => {
-        console.log(minmax?.min, minmax?.max);
         productsPriceFilter = productsState?.products?.filter(minmaxPrice => minmax?.min <= minmaxPrice.price && minmaxPrice.price <= minmax?.max);
         productsFilter = productsPriceFilter;
         color?.color?.map((checkedColor) => {
