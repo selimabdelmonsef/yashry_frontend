@@ -25,7 +25,9 @@ const Categories = () => {
             {categories && <div className={styles.categoryBase}>
                 <ul className={styles.departments}>
                     {categories.map((items) => {
-                        return <li onClick={() => categoryHandler(items)} className={styles.departmentsItems}>{items?.name}</li>
+                        return <li onClick={() => categoryHandler(items)} className={styles.departmentsItems}>
+                            <button className={styles.departmentsBtn}>{items?.name}</button>
+                            </li>
                     })}
                 </ul>
             </div>}

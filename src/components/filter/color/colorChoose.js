@@ -32,7 +32,8 @@ const ColorChoose = () => {
     return (
         <div className={styles.chooseColor}>
 
-            Color
+            <div className={styles.colorStyle}>Color</div>
+
             <SearchBar placeholder={"Enter Color"} />
             <div className={styles.checkbox}>
                 <MyCheckBox items = {color} itemsSelected={(value)=>updateColor(value)}/>

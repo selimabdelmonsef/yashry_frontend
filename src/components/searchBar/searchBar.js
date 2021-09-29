@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './searchBar.module.css';
 
 function SearchBar({
-    placeholder }) {
+    placeholder,handleChange }) {
     return (
-
         <div> 
-        <input placeholder={placeholder} className={styles.inputStyle}></input>  
+        <input placeholder={placeholder} onChange={handleChange} className={styles.inputStyle}></input>  
         </div>
     );
 }

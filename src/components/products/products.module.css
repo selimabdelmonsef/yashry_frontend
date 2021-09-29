@@ -1,6 +1,7 @@
 .productsBase{
-    padding-top: 40px;
     margin-left: 126px;
+    overflow-y: auto;
+    height: 600px;
 }
 
 .productsElements{
@@ -8,4 +9,11 @@
 }
 .imageStyle{
     width: 75%;
+}
+.productName{
+    font-size: 15px;
+    font-variant: all-small-caps;
+}
+.productPrice{
+    color: darkred;
 }

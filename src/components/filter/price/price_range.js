@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MultiRangeSlider from '../../multiRangeSlider/multiRangeSlider.js';
 import { useDispatch } from 'react-redux';
 import { REDUCERS_CONSTANTS } from '../../../constants/reducers.constants.js';
+import styles from './price_range.module.css'
 
 
 const PriceRange = () => {
@@ -22,7 +23,7 @@ const PriceRange = () => {
 
   return (
     <div>
-      <h6>Price Range</h6>
+      <h6 className={styles.priceRangeStyle}>Price Range</h6>
       <MultiRangeSlider
         min={20}
         max={1000}
